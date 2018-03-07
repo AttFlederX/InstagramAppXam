@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InstagramAppXam.CameraPage"
+             BackgroundColor="#333333"
+             Padding="10">
+    <!--BackgroundColor="{StaticResource pageBackgroundColor}"-->
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="BackgroundColor" Value="#00b0ba" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
+
+            <Style TargetType="{x:Type Label}">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 0.35"
+                         AbsoluteLayout.LayoutFlags="All"
+                         Spacing="15">
+                <Label Text="Add a description: " />
+                <Editor x:Name="descriptionEditor" VerticalOptions="FillAndExpand" TextColor="White" BackgroundColor="#555555" />
+            </StackLayout>
+
+            <StackLayout AbsoluteLayout.LayoutBounds="0, 1, 1, 0.63"
+                         AbsoluteLayout.LayoutFlags="All"
+                         Spacing="5">
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Take a photo" Command="{Binding TakeAPhotoCommand}" />
+                    <Button Text="Open gallery" Command="{Binding OpenGalleryCommand}" />
+                </StackLayout>
+
+                <Image Source="{Binding PostImage}" Aspect="AspectFit" />
+                <Button Text="Post" Command="{Binding PostCommand}" />
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

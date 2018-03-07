@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InstagramAppXam.RegistrationPage"
+             BackgroundColor="{StaticResource pageBackgroundColor}"
+             Title="Registration"
+             Padding="5, 10, 5, 20">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="BackgroundColor" Value="#00b0ba" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="HorizontalOptions" Value="Fill" />
+            </Style>
+
+            <Style TargetType="{x:Type Label}">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+
+            <Style TargetType="{x:Type Entry}">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="PlaceholderColor" Value="Gray" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                         AbsoluteLayout.LayoutFlags="All"
+                         Padding="15, 0, 15, 0"
+                         Spacing="10">
+
+                <!--<Label Text="Registration" FontSize="30" FontAttributes="Bold" />-->
+                <Label Margin="0, 20, 0, 10" FontSize="18" Text="Enter your credentials: " />
+
+                <Entry x:Name="usernameEntry" Placeholder="Username" Text="{Binding Username, Mode=TwoWay}" />
+                <Entry x:Name="emailEntry" Placeholder="Email" Keyboard="Email" Text="{Binding Email, Mode=TwoWay}" />
+                <Entry x:Name="passwordEntry" IsPassword="True" Placeholder="Password" Text="{Binding Password, Mode=TwoWay}" />
+                <Entry x:Name="repeatPasswordEntry" IsPassword="True" Placeholder="Repeat password" Text="{Binding RepeatPassword, Mode=TwoWay}" />
+
+                <Picker Title="Gender" TextColor="#C0C0C0" SelectedItem="{Binding Gender, Mode=TwoWay}">
+                    <Picker.Items>
+                        <x:String>Male</x:String>
+                        <x:String>Female</x:String>
+                        <x:String>Other</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+
+            <StackLayout AbsoluteLayout.LayoutBounds="0, 1, 1, 0.1"
+                         AbsoluteLayout.LayoutFlags="All"
+                         Padding="15, 0, 15, 0">
+                <Button x:Name="registerButton" Text="Register" Command="{Binding RegisterCommand}" />
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

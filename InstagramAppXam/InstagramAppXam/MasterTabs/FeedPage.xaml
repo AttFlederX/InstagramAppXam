@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InstagramAppXam.FeedPage"
+             BackgroundColor="#333333">
+    <!--BackgroundColor="{StaticResource pageBackgroundColor}"-->
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="{x:Type Label}">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ListView x:Name="masterListView" HasUnevenRows="True" SeparatorColor="Cyan"
+                      ItemSelected="MasterListView_ItemSelected" ItemsSource="{Binding PostList}"
+                      AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                      AbsoluteLayout.LayoutFlags="All">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10, 5, 10, 5" Spacing="10">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="http://placehold.it/700x1000" WidthRequest="64" HeightRequest="64" Aspect="Fill" />
+
+                                    <StackLayout VerticalOptions="Center">
+                                        <Label Text="{Binding Username}" />
+                                        <Label TextColor="Gray" Text="{Binding DateString}" />
+                                    </StackLayout>
+                                </StackLayout>
+
+                                <Label Text="{Binding Description}" />
+                                <Image Source="http://placehold.it/1920x1080" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                   Text="You haven't posted anything yet" IsVisible="{Binding IsPostListEmpty}" TextColor="Gray"
+                   AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                   AbsoluteLayout.LayoutFlags="All" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
